@@ -89,5 +89,10 @@
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 		</dependency>
+		<dependency>
+	<groupId>com.hazelcast</groupId>
+	<artifactId>hazelcast-all</artifactId>
+	<version>4.0.2</version>
+</dependency>
 	</dependencies>
 </project>
