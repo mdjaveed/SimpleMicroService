@@ -29,7 +29,10 @@ public class SimpleController {
 		return new ResponseEntity<List<Employee>>(service.getEmployeeList(), HttpStatus.OK);
 	}
 	@GetMapping( value = "/employee" ,produces = MediaType.APPLICATION_JSON_VALUE )
-	public ResponseEntity<Employee> employeeById(@RequestParam(value = "id",required = true) int id ) throws JsonMappingException, JsonProcessingException {
-		return new ResponseEntity<Employee>(service.getEmployeeByEmpId(id),HttpStatus.OK);
+	public ResponseEntity<Object> employeeById(@RequestParam(value = "id",required = true) int id ) throws JsonMappingException, JsonProcessingException {
+		if(service.getEmployeeByEmpId(id)!=null) {
+			return new ResponseEntity<Object>(service.getEmployeeByEmpId(id),HttpStatus.OK);
+		}
+		return new ResponseEntity<Object>("{\"error\" : \"Data Not Found for "+id+"\"}", HttpStatus.NOT_FOUND);
 	}
 }

@@ -6,18 +6,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookService {
     @Cacheable("books")
-    public String getBookNameByIsbn(String isbn) {
+    public String getBookNameByIsbn(String isbn) throws InterruptedException {
         return findBookInSlowSource(isbn);
     }
 
-    private String findBookInSlowSource(String isbn) {
-        // some long processing
-    	System.out.println("In Source Method");
-        try {
+    private String findBookInSlowSource(String isbn) throws InterruptedException {
             Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return "Sample Book Name";
     }
 }

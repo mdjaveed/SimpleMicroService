@@ -36,8 +36,8 @@ public class ServiceImpl implements Iservice {
 	@Override
 	public Employee getEmployeeByEmpId(int id) throws JsonMappingException, JsonProcessingException {
 		List<Employee> list =	mapper.readValue(employeeList, new TypeReference<List<Employee>>(){} );
-
-		return list.stream().filter(emp -> emp.getEmpId() == id).findAny().orElseThrow();
+		Employee employee= list.stream().filter(emp -> emp.empId == id).findAny().orElse(null);
+		return employee;
 	}
 
 }

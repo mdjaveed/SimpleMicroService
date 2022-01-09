@@ -13,9 +13,11 @@ import com.simplerService.bookService.BookService;
 public class BookController {
     @Autowired
     private BookService bookService;
+    
+     
 
     @GetMapping("/{isbn}")
-    public String getBookNameByIsbn(@PathVariable("isbn") String isbn) {
+    public String getBookNameByIsbn(@PathVariable("isbn") String isbn) throws InterruptedException {
         return bookService.getBookNameByIsbn(isbn);
     }
 }
